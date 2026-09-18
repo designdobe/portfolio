@@ -10,57 +10,58 @@ const [lead, ...rest] = featuredProjects;
 export default function HomePage() {
   return (
     <>
-      {/* Hero - asymmetric split, mirrors 00COVER: chrome monogram + wide display type on black. */}
-      <section className="relative flex min-h-[92dvh] flex-col justify-center overflow-hidden pb-16 pt-24">
+      {/* Hero - asymmetric split, mirrors 00COVER: chrome monogram beside wide
+          display type on black. Text and monogram occupy separate columns so
+          the headline never sits on top of the metal. */}
+      <section className="relative flex min-h-[92dvh] items-center overflow-hidden pb-16 pt-24">
         <div
-          className="pointer-events-none absolute inset-y-0 right-0 hidden w-[52%] opacity-90 lg:block"
-          aria-hidden="true"
-        >
-          <MediaSlot
-            src="/brand/monogram.png"
-            alt=""
-            caption="00COVER 크롬 모노그램"
-            aspect="h-full"
-            priority
-            decorative
-            className="size-full bg-transparent"
-          />
-        </div>
-
-        <div
-          className="relative mx-auto w-full max-w-[1600px]"
+          className="mx-auto grid w-full max-w-[1600px] items-center gap-10 lg:grid-cols-[66fr_34fr] lg:gap-8"
           style={{ paddingInline: "var(--gutter)" }}
         >
-          <Reveal>
-            <h1 className="font-display chrome-text text-[12vw] leading-[0.9] sm:text-[10vw] lg:text-[6.1vw]">
-              {profile.headline[0]}
-              <br />
-              {profile.headline[1]}
-            </h1>
-          </Reveal>
+          <div className="order-2 lg:order-1">
+            <Reveal>
+              <h1 className="font-display chrome-text text-[12vw] leading-[0.9] sm:text-[10vw] lg:text-[3.9vw]">
+                {profile.headline[0]}
+                <br />
+                {profile.headline[1]}
+              </h1>
+            </Reveal>
 
-          <Reveal delay={120}>
-            <p className="mt-6 max-w-xl text-base text-fg-muted md:text-lg">
-              {profile.summary}
-            </p>
-          </Reveal>
+            <Reveal delay={120}>
+              <p className="mt-6 max-w-xl text-base text-fg-muted md:text-lg">
+                {profile.summary}
+              </p>
+            </Reveal>
 
-          <Reveal delay={200}>
-            <div className="mt-10 flex flex-wrap gap-3">
-              <Link
-                href="/work"
-                className="label inline-flex items-center gap-2 bg-accent px-6 py-3.5 text-accent-fg transition-transform active:translate-y-px"
-              >
-                선택 작업 보기 <span aria-hidden="true">→</span>
-              </Link>
-              <Link
-                href="/about"
-                className="label inline-flex items-center border border-line-strong px-6 py-3.5 text-fg transition-colors hover:bg-surface-2 active:translate-y-px"
-              >
-                이력 보기
-              </Link>
-            </div>
-          </Reveal>
+            <Reveal delay={200}>
+              <div className="mt-10 flex flex-wrap gap-3">
+                <Link
+                  href="/work"
+                  className="label inline-flex items-center gap-2 bg-accent px-6 py-3.5 text-accent-fg transition-transform active:translate-y-px"
+                >
+                  선택 작업 보기 <span aria-hidden="true">→</span>
+                </Link>
+                <Link
+                  href="/about"
+                  className="label inline-flex items-center border border-line-strong px-6 py-3.5 text-fg transition-colors hover:bg-surface-2 active:translate-y-px"
+                >
+                  이력 보기
+                </Link>
+              </div>
+            </Reveal>
+          </div>
+
+          <div className="order-1 lg:order-2" aria-hidden="true">
+            <MediaSlot
+              src="/brand/monogram.png"
+              alt=""
+              caption="00COVER 크롬 모노그램"
+              aspect="aspect-square"
+              priority
+              decorative
+              className="mx-auto w-2/3 sm:w-1/2 lg:w-full"
+            />
+          </div>
         </div>
       </section>
 
