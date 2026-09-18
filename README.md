@@ -52,6 +52,10 @@ src/
 [`ASSETS.md`](./ASSETS.md)를 참고하세요. 파일을 넣으면 코드 수정 없이
 바로 표시됩니다.
 
+```bash
+./scripts/check-assets.sh   # 아직 비어 있는 이미지 슬롯 확인
+```
+
 ## 디자인 결정
 
 | 항목 | 내용 |

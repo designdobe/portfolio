@@ -30,6 +30,51 @@ Figma 내보내기 패널에서 **W 값을 직접 입력**하시면 가장 간�
 - 용량 목표: 커버 400KB 이하, 본문 300KB 이하
 - Figma에서 프레임을 고른 뒤 Export → `W` 칸에 위 가로값 입력 → JPG/PNG 선택
 
+## 업로드 방법
+
+업로드할 폴더는 저장소에 **미리 만들어 두었습니다.** 새로 만드실 필요 없이
+해당 폴더에 파일만 넣으시면 됩니다.
+
+파일명은 표의 경로와 **정확히** 일치해야 합니다 (대소문자 포함).
+
+### 방법 A · GitHub 웹에서 올리기 (설치 불필요, 권장)
+
+1. <https://github.com/designdobe/portfolio> 접속
+2. 파일 목록 위쪽 **브랜치 선택 버튼**을 눌러 `claude/wizardly-pasteur-mm8njs` 선택
+   (기본 브랜치가 아니라 이 브랜치여야 합니다)
+3. `public` → `work` → 올릴 프로젝트 폴더로 이동
+4. 우측 위 **Add file → Upload files**
+5. 파일을 끌어다 놓고, 아래 **Commit changes** 클릭
+
+폴더째 올리셔도 됩니다. `work` 폴더 안에 프로젝트별 하위 폴더를 그대로 만들어
+두고 `work` 폴더를 통째로 끌어다 놓으면 경로가 유지됩니다.
+
+제한: 파일 1개당 25MB, 한 번에 100개까지. 위 권장 사이즈면 여유롭습니다.
+
+### 방법 B · 내 컴퓨터에서 git으로 올리기
+
+```bash
+git clone https://github.com/designdobe/portfolio.git
+cd portfolio
+git checkout claude/wizardly-pasteur-mm8njs
+
+# 내보낸 이미지를 public/work/<슬러그>/ 아래에 복사한 뒤
+./scripts/check-assets.sh     # 빠진 파일 확인
+
+git add public
+git commit -m "chore: add project imagery"
+git push
+```
+
+### 진행 상황 확인
+
+```bash
+./scripts/check-assets.sh
+```
+
+아직 비어 있는 슬롯을 전부 나열합니다. 현재 39개 슬롯이 비어 있습니다.
+한 번에 다 채우지 않아도 되고, 넣은 것부터 바로 표시됩니다.
+
 ## 커버 구도에서 주의할 점
 
 커버 한 장이 화면에 따라 **다른 비율로 잘려서** 쓰입니다.
