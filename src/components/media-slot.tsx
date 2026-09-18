@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { asset } from "@/lib/asset";
 
 type Props = {
   src: string;
@@ -67,7 +68,7 @@ export function MediaSlot({
         // eslint-disable-next-line @next/next/no-img-element
         <img
           ref={ref}
-          src={src}
+          src={asset(src)}
           alt={alt}
           onError={() => setMissing(true)}
           loading={priority ? "eager" : "lazy"}
