@@ -38,7 +38,7 @@ export default async function ProjectPage({ params }: Params) {
           src={project.cover}
           alt={`${project.title} - ${project.titleKo}`}
           caption={project.titleKo}
-          aspect="aspect-[4/5] sm:aspect-[16/10] lg:aspect-[16/8]"
+          aspect="aspect-[3/2] sm:aspect-[16/9] lg:aspect-[2/1]"
           priority
         />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />

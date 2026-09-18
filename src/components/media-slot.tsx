@@ -14,7 +14,9 @@ type Props = {
   /**
    * Decorative slots render nothing at all when the file is missing, instead of
    * a labelled placeholder - used for the hero monogram, where an empty box
-   * would read as a layout bug.
+   * would read as a layout bug. They also drop the surface fill and switch to
+   * object-contain, so a transparent PNG keeps its shape and sits on the page
+   * background rather than on a grey card.
    */
   decorative?: boolean;
 };
@@ -54,7 +56,11 @@ export function MediaSlot({
   if (missing && decorative) return null;
 
   return (
-    <figure className={`relative overflow-hidden bg-surface ${aspect} ${className}`}>
+    <figure
+      className={`relative overflow-hidden ${
+        decorative ? "" : "bg-surface"
+      } ${aspect} ${className}`}
+    >
       {!missing && (
         // next/image fails on a local file that has not been exported yet, so
         // this slot deliberately uses a plain img. See the note above.
@@ -67,7 +73,9 @@ export function MediaSlot({
           loading={priority ? "eager" : "lazy"}
           fetchPriority={priority ? "high" : "auto"}
           decoding="async"
-          className="absolute inset-0 size-full object-cover"
+          className={`absolute inset-0 size-full ${
+            decorative ? "object-contain" : "object-cover"
+          }`}
         />
       )}
 

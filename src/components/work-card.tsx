@@ -27,7 +27,7 @@ export function WorkCard({
         src={project.cover}
         alt={`${project.title} - ${project.titleKo}`}
         caption={project.titleKo}
-        aspect={size === "large" ? "aspect-[3/2] md:aspect-[21/9]" : "aspect-[4/3]"}
+        aspect={size === "large" ? "aspect-[3/2] md:aspect-[2/1]" : "aspect-[3/2]"}
         priority={priority}
         className="transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
       />
