@@ -72,6 +72,21 @@ src/
 
 ## 배포
 
-정적 프리렌더이므로 Vercel에 그대로 올리면 됩니다.
-`NEXT_PUBLIC_SITE_URL` 환경변수에 실제 도메인을 넣으면 사이트맵과 OG 태그의
-절대 URL이 맞춰집니다.
+`claude/wizardly-pasteur-mm8njs`에 푸시하면 GitHub Actions가 정적 export를
+빌드해 GitHub Pages로 올립니다. 워크플로가 Pages를 직접 활성화하므로 설정
+페이지를 따로 건드릴 필요는 없습니다.
+
+    https://designdobe.github.io/portfolio/
+
+빌드 전에 lint가 돌기 때문에 코드가 깨진 상태로는 배포되지 않습니다.
+진행 상황은 저장소의 Actions 탭에서 볼 수 있습니다.
+
+Pages는 저장소 하위 경로(`/portfolio`)로 서비스되므로, 워크플로가
+`NEXT_PUBLIC_BASE_PATH`를 넘겨 정적 export로 전환합니다. 이 변수가 없으면
+평소대로 루트 기준 Next 빌드가 되므로, Vercel 같은 호스트에 그대로 올려도
+됩니다. 그 경우 `NEXT_PUBLIC_SITE_URL`에 실제 도메인을 넣으면 사이트맵과
+OG 태그의 절대 URL이 맞춰집니다.
+
+`/public` 아래 이미지를 `<img>`로 참조할 때는 반드시 `src/lib/asset.ts`의
+`asset()`을 거쳐야 합니다. `next/link`와 달리 base path가 자동으로 붙지 않아
+하위 경로 배포에서 404가 납니다.
