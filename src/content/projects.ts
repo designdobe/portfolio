@@ -375,16 +375,8 @@ export const projects: Project[] = [
     tools: "Figma",
     overview:
       "공연 관람객들이 공통으로 겪는 '좌석 시야 정보 부족'이라는 페인포인트를 해결하기 위해, 실시간 좌석 리뷰를 공유하는 플랫폼 'PODOAL'의 UI/UX를 설계했습니다. 베타 런칭 후 67명의 유저를 대상으로 설문을 진행하여, '직관적이지 못한 화면 구성' 등의 문제를 데이터 기반으로 개선했습니다. 모바일과 PC 웹 환경 모두에서 리뷰 작성과 정보 탐색이 매끄럽게 이어지도록 유저 저니를 최적화하였으며, 프론트엔드/백엔드 개발 직군과 협업했습니다.",
-    sections: [
-      {
-        heading: "MVP 범위",
-        body: "MVP#1 실시간 리뷰, MVP#2 공연별 리뷰목록 보기와 필터링, MVP#3 평가항목별 좌석리뷰 보기 및 쓰기와 수정으로 단계를 나누어 설계했습니다. 공연별 좌석 리뷰 확인과 작성, 실시간 등록 리뷰 확인, 내가 등록한 리뷰 확인, 공연장 상세정보 확인을 핵심 플로우로 정의했습니다.",
-      },
-    ],
     cover: "/work/podoal-seat-review/cover.jpg",
     media: [
-      { src: "/work/podoal-seat-review/01.jpg", caption: "MVP#1 실시간 리뷰" },
-      { src: "/work/podoal-seat-review/02.jpg", caption: "MVP#2 리뷰목록과 필터링" },
       { src: "/work/podoal-seat-review/03.jpg", caption: "MVP#3 평가항목별 좌석리뷰" },
     ],
   },
