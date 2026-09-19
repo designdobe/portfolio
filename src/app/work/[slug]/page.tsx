@@ -131,11 +131,13 @@ export default async function ProjectPage({ params }: Params) {
               <Reveal key={item.src} delay={i * 60}>
                 <MediaSlot
                   src={item.src}
-                  alt={`${project.title} - ${item.caption}`}
+                  alt={item.caption ? `${project.title} - ${item.caption}` : project.title}
                   caption={item.caption}
                   aspect="aspect-[16/10]"
                 />
-                <p className="mt-3 text-sm text-fg-dim">{item.caption}</p>
+                {item.caption && (
+                  <p className="mt-3 text-sm text-fg-dim">{item.caption}</p>
+                )}
               </Reveal>
             ))}
           </div>

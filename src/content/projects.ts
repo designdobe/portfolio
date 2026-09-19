@@ -6,10 +6,12 @@
  * against the design. Figures in `results` are quoted from the deck's own
  * results slides - never add a metric that is not on a slide.
  *
- * `cover` / `media` point at files under /public/work. Those files are NOT in
- * the repo yet: the Figma asset host is blocked from this environment, so the
- * images have to be exported from Figma by hand. See ASSETS.md for the export
- * list. Until a file exists, <MediaSlot> renders a labelled placeholder.
+ * Imagery lives under /public/work/<slug>/. `cover` names the file that has to
+ * exist for the project to appear at all - src/lib/published.ts hides a project
+ * whose cover is missing. The `media` entries here only supply captions: the
+ * gallery itself is built from the numbered files actually in the folder, so an
+ * added 05.jpg shows up on its own, uncaptioned until it is listed here.
+ * See ASSETS.md for the export sizes.
  */
 
 export type Category = "BX" | "SPACE" | "GRAPHIC" | "DIGITAL" | "AI" | "PERSONAL";
@@ -65,6 +67,7 @@ export const projects: Project[] = [
       { src: "/work/siniju-brand-renewal/01.jpg", caption: "리뉴얼 매장 파사드" },
       { src: "/work/siniju-brand-renewal/02.jpg", caption: "브랜드 통합 가이드라인" },
       { src: "/work/siniju-brand-renewal/03.jpg", caption: "내부 그래픽 사인 시스템" },
+      { src: "/work/siniju-brand-renewal/04.jpg", caption: "S.I 가이드 적용 매장" },
     ],
   },
   {
@@ -143,7 +146,10 @@ export const projects: Project[] = [
       { value: "Global Flagship", label: "베트남 타오디엔 글로벌 플래그십 스토어 런칭 및 신규 S.I 구축" },
     ],
     cover: "/work/siniju-thao-dien/cover.jpg",
-    media: [{ src: "/work/siniju-thao-dien/01.jpg", caption: "공간별 이미지 전개" }],
+    media: [
+      { src: "/work/siniju-thao-dien/01.jpg", caption: "공간별 이미지 전개" },
+      { src: "/work/siniju-thao-dien/02.jpg", caption: "브랜드 아이템 및 매장 적용" },
+    ],
   },
   {
     slug: "wangsimni-store-launching",
@@ -261,6 +267,9 @@ export const projects: Project[] = [
       "직관적인 카피라이팅과 메뉴 연출을 통해 오프라인 매장의 고객 접점(내외부 POP, 포스터)에서 즉각적인 아이캐치와 구매 전환을 유도하는 시각적 장치를 설계했습니다. 또한, 디자인 템플릿을 시스템화하여 향후 가맹점별 주류 이벤트 진행 시 발생하는 외주/업무 리소스를 대폭 단축했습니다.",
     results: [{ value: "+29% Sales Growth", label: "이벤트 진행 기간 내 저녁 매출 29% 상승 견인" }],
     cover: "/work/menu-promotion-kv/cover.jpg",
+    media: [
+      { src: "/work/menu-promotion-kv/01.jpg", caption: "매장 POP 및 포스터" },
+    ],
   },
   {
     slug: "new-menu-kv",
@@ -300,6 +309,10 @@ export const projects: Project[] = [
       { value: "Customer DB", label: "향후 신메뉴 마케팅 및 프로모션을 위한 가맹점별 타겟 고객 DB 구축" },
     ],
     cover: "/work/brand-anniversary/cover.jpg",
+    media: [
+      { src: "/work/brand-anniversary/01.jpg", caption: "매장 이벤트 포스터" },
+      { src: "/work/brand-anniversary/02.jpg", caption: "1주년 기념품 굿즈" },
+    ],
   },
   {
     slug: "brand-supporters",
@@ -322,6 +335,9 @@ export const projects: Project[] = [
       },
     ],
     cover: "/work/brand-supporters/cover.jpg",
+    media: [
+      { src: "/work/brand-supporters/01.jpg", caption: "서포터즈 기념품 및 성과증명서" },
+    ],
   },
   {
     slug: "yourshelf-pro",
@@ -408,6 +424,9 @@ export const projects: Project[] = [
       { value: "강의 · 협업 제안", label: "교육플랫폼 강의제안 및 다수 협업제안 수신" },
     ],
     cover: "/work/kimdobe-personal-branding/cover.jpg",
+    media: [
+      { src: "/work/kimdobe-personal-branding/01.jpg", caption: "SNS 채널 콘텐츠" },
+    ],
   },
   {
     slug: "pace-page-1-hour",
@@ -419,6 +438,10 @@ export const projects: Project[] = [
     overview:
       "좋아하는 취미인 독서와 러닝의 '몰입'이라는 공통소구를 활용한 가상의 행사를 기획하였습니다. 겹쳐진 라운드된 곡선은 펼쳐진 책장이 되기도 하고, 달리기를 위한 트랙이 되기도 합니다.",
     cover: "/work/pace-page-1-hour/cover.jpg",
+    media: [
+      { src: "/work/pace-page-1-hour/01.jpg", caption: "행사 굿즈 및 키비주얼" },
+      { src: "/work/pace-page-1-hour/02.jpg", caption: "행사 포스터" },
+    ],
   },
   {
     slug: "rnd-academy-space",

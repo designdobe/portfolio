@@ -23,12 +23,38 @@ function hasFile(publicPath: string) {
   }
 }
 
+/** 01.jpg, 02.png, ... - the numbered body images of a project. */
+const MEDIA_FILE = /^\d+\.(jpe?g|png|webp)$/i;
+
+/**
+ * Builds a project's body gallery from whatever is actually in its folder.
+ *
+ * Numbering the files is the whole interface: drop 03.jpg into the folder and
+ * it appears, in order, with no code change. A caption declared in
+ * projects.ts for that exact path is used when there is one; otherwise the
+ * image runs uncaptioned, which beats labelling it with a guess.
+ */
+function mediaFor(project: Project) {
+  const dir = path.join(process.cwd(), "public", "work", project.slug);
+  let files: string[] = [];
+  try {
+    files = fs.readdirSync(dir).filter((f) => MEDIA_FILE.test(f)).sort();
+  } catch {
+    return [];
+  }
+
+  return files.map((file) => {
+    const src = `/work/${project.slug}/${file}`;
+    return {
+      src,
+      caption: project.media?.find((m) => m.src === src)?.caption ?? "",
+    };
+  });
+}
+
 export const publishedProjects: Project[] = projects
   .filter((project) => hasFile(project.cover))
-  .map((project) => ({
-    ...project,
-    media: project.media?.filter((item) => hasFile(item.src)),
-  }));
+  .map((project) => ({ ...project, media: mediaFor(project) }));
 
 export const publishedFeatured = publishedProjects.filter((p) => p.featured);
 
