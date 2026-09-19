@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Reveal } from "@/components/reveal";
-import { capabilities, experience, profile } from "@/content/profile";
+import { awards, capabilities, experience, profile } from "@/content/profile";
 import { asset } from "@/lib/asset";
 
 export const metadata: Metadata = {
@@ -110,6 +110,37 @@ export default function AboutPage() {
                     </div>
                   )}
                 </div>
+              </Reveal>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="border-t border-line py-16 md:py-24">
+        <div
+          className="mx-auto max-w-[1600px]"
+          style={{ paddingInline: "var(--gutter)" }}
+        >
+          <Reveal>
+            <h2 className="font-display text-3xl md:text-5xl">Awards</h2>
+          </Reveal>
+          <ul className="mt-10 flex flex-col">
+            {awards.map((award, i) => (
+              <Reveal
+                key={award.title}
+                delay={i * 60}
+                as="li"
+                className="grid gap-2 border-t border-line py-7 md:grid-cols-[12rem_1fr] md:gap-10"
+              >
+                <span className="label pt-1 text-fg-dim">{award.date}</span>
+                <span>
+                  <span className="block text-base md:text-lg">
+                    {award.title}
+                  </span>
+                  <span className="mt-1 block text-sm leading-relaxed text-fg-muted">
+                    {award.detail}
+                  </span>
+                </span>
               </Reveal>
             ))}
           </ul>

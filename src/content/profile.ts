@@ -135,13 +135,42 @@ export const experience = [
 ] as const;
 
 /**
- * Education & Awards - 00resume.
+ * Awards.
  *
- * NOT RENDERED: the section was taken off the about page. Kept so it can be
- * restored without going back to the deck.
+ * Supersedes the deck's combined "Education & Awards" block: only the awards
+ * are shown now, so the degree lives in `education` below and nothing renders
+ * it. Newest first.
+ */
+export const awards = [
+  {
+    date: "2025.02",
+    title: "아모레퍼시픽 AI 챌린지 아이디어상",
+    detail: "AI 활용 광고 공모전 효능 부문 (일리윤)",
+  },
+  {
+    date: "2022.08",
+    title: "항해99 8기 실전프로젝트 최고의 디자이너상 · 최고의 프로젝트상",
+    detail: "실전프로젝트 UI/UX 디자인 부문 참여 (2022.08.26 - 2022.10.07)",
+  },
+  {
+    date: "2018.12",
+    title: "2018 에너지공단 디자인 공모전 우수상",
+    detail: "인포그래픽 부문",
+  },
+  {
+    date: "2008.11",
+    title: "특허청 디자인권 공모전 입선",
+    detail: "파티를 위한 케이크 서버",
+  },
+] as const;
+
+/**
+ * Education - 00resume.
+ *
+ * NOT RENDERED: the about page shows awards only. Kept so the degree does not
+ * have to be dug out of the deck again.
  */
 export const education = [
-  { year: "2025", title: "아모레퍼시픽 AI 챌린지 공모전 아이디어상" },
   { year: "2009", title: "명지전문대학교 산업정보디자인과 졸업 (4.02/4.5)" },
 ] as const;
 
