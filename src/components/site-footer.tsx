@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { profile } from "@/content/profile";
 
 export function SiteFooter() {
@@ -14,34 +13,14 @@ export function SiteFooter() {
             <p className="label mt-2 text-fg-muted">{profile.tagline}</p>
           </div>
 
-          <ul className="flex flex-col gap-3 md:items-end">
-            <li>
-              <a
-                href={`mailto:${profile.email}`}
-                className="text-sm text-fg-muted underline-offset-4 transition-colors hover:text-fg hover:underline"
-              >
-                {profile.email}
-              </a>
-            </li>
-            <li>
-              <a
-                href={profile.instagram.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm text-fg-muted underline-offset-4 transition-colors hover:text-fg hover:underline"
-              >
-                Instagram @{profile.instagram.handle}
-              </a>
-            </li>
-            <li>
-              <Link
-                href="/work"
-                className="text-sm text-fg-muted underline-offset-4 transition-colors hover:text-fg hover:underline"
-              >
-                전체 프로젝트
-              </Link>
-            </li>
-          </ul>
+          <a
+            href={profile.instagram.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-fg-muted underline-offset-4 transition-colors hover:text-fg hover:underline"
+          >
+            Instagram @{profile.instagram.handle}
+          </a>
         </div>
 
         <p className="mt-12 text-xs text-fg-dim">

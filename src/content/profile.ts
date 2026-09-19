@@ -15,7 +15,7 @@ export const profile = {
   headline: ["VISUAL SOLUTIONS", "FOR BUSINESS IMPACT."],
   summary:
     "공간부터 AI 크리에이티브까지, 비즈니스 성과를 창출하는 BX 디렉터",
-  email: "dobe.designer@gmail.com",
+  email: "designer.yurikim@gmail.com",
   instagram: {
     handle: "kim.dobe",
     url: "https://instagram.com/kim.dobe",
