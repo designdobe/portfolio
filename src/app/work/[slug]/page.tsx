@@ -154,12 +154,18 @@ export default async function ProjectPage({ params }: Params) {
             <Reveal>
               <h2 className="font-display text-3xl md:text-5xl">Results</h2>
             </Reveal>
-            <div className="mt-10 grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-3">
+            {/*
+              Separators are drawn on the cells, not as gaps over a tinted
+              parent: a tinted parent shows through wherever a row is short of
+              cells, which reads as a stray grey box. Horizontal rules only,
+              matching the hairlines used elsewhere on the site.
+            */}
+            <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3">
               {project.results.map((result, i) => (
                 <Reveal
                   key={result.value}
                   delay={i * 80}
-                  className="bg-surface p-8"
+                  className="border-t border-line py-8 sm:pr-8 lg:pr-10"
                 >
                   <p className="font-display text-2xl md:text-3xl">
                     {result.value}
