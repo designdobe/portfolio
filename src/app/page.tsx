@@ -2,7 +2,13 @@ import Link from "next/link";
 import { MediaSlot } from "@/components/media-slot";
 import { Reveal } from "@/components/reveal";
 import { WorkCard } from "@/components/work-card";
-import { capabilities, experience, profile } from "@/content/profile";
+import {
+  capabilities,
+  experience,
+  impact,
+  impactNote,
+  profile,
+} from "@/content/profile";
 import { publishedFeatured } from "@/lib/published";
 
 const [lead, ...rest] = publishedFeatured;
@@ -77,6 +83,42 @@ export default function HomePage() {
               </Link>
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      {/* Impact - lead times cut by the AI workflow, all the same kind of
+          figure so the row reads as one statement. */}
+      <section aria-label="AI 워크플로우 성과" className="border-y border-line bg-surface">
+        <div
+          className="mx-auto max-w-[1600px] py-12 md:py-16"
+          style={{ paddingInline: "var(--gutter)" }}
+        >
+          <Reveal>
+            <p className="label text-fg-dim">{impactNote}</p>
+          </Reveal>
+
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+            {impact.map((item, i) => (
+              <Reveal
+                key={item.label}
+                delay={i * 80}
+                className="border-t border-line py-6 sm:pr-8 lg:pr-10"
+              >
+                {/* Two lines reserved from lg, where the longest pair wraps:
+                    without it the captions sit at different heights. */}
+                <p className="font-display flex flex-wrap items-baseline gap-x-2 text-2xl md:text-3xl lg:min-h-[1.9em] lg:content-start">
+                  <span className="text-fg-dim">{item.from}</span>
+                  <span aria-hidden="true" className="text-fg-dim">
+                    →
+                  </span>
+                  <span>{item.to}</span>
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-fg-muted">
+                  {item.label}
+                </p>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 

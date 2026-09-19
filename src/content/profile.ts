@@ -128,13 +128,22 @@ export const experience = [
   },
 ] as const;
 
-/** Education & Awards - 00resume */
+/**
+ * Education & Awards - 00resume.
+ *
+ * NOT RENDERED: the section was taken off the about page. Kept so it can be
+ * restored without going back to the deck.
+ */
 export const education = [
   { year: "2025", title: "아모레퍼시픽 AI 챌린지 공모전 아이디어상" },
   { year: "2009", title: "명지전문대학교 산업정보디자인과 졸업 (4.02/4.5)" },
 ] as const;
 
-/** Core Tools - 00resume */
+/**
+ * Core Tools - 00resume.
+ *
+ * NOT RENDERED, as above.
+ */
 export const tools = [
   { group: "Visual", items: "Illustrator, Photoshop, InDesign, Figma" },
   { group: "Space", items: "Sketchup, AutoCad" },
@@ -142,16 +151,19 @@ export const tools = [
 ] as const;
 
 /**
- * Figures for the homepage impact strip, each quoted from a results slide.
+ * Homepage impact strip.
  *
- * NOT RENDERED at the moment: the four read as a jumble side by side, mixing
- * store counts, visitor counts and revenue percentages, so the strip was taken
- * off the landing page. Kept here so it can be put back, whole or in part, by
- * restoring the section in src/app/page.tsx.
+ * Every entry is a lead time the deck records against a generative-AI change,
+ * quoted from 004_02 and 003_04. They are deliberately all the same kind of
+ * figure: the earlier strip mixed store counts, visitor counts and revenue
+ * percentages, which read as a jumble rather than a summary. Ordered longest
+ * to shortest.
  */
 export const impact = [
-  { value: "40", unit: "Stores", label: "S.I 가이드 적용 및 시공 완료", source: "01_07" },
-  { value: "+16", unit: "%", label: "리뉴얼 런칭 후 가맹 문의 상승", source: "01_07" },
-  { value: "4,100", unit: "Visitors", label: "컬리 푸드 페스타 부스 방문 및 시식", source: "02_02" },
-  { value: "+29", unit: "%", label: "프로모션 기간 저녁 매출 상승", source: "06_02" },
+  { from: "1 Week", to: "1 Day", label: "메뉴 일러스트 제작", source: "004_02" },
+  { from: "5 Days", to: "1 Day", label: "공간 컨셉 시안 합의", source: "003_04" },
+  { from: "3 Days", to: "2 Hours", label: "레퍼런스 조사 및 스케치", source: "004_02" },
+  { from: "1 Hour", to: "15 Min", label: "메뉴 섬네일 제작", source: "004_02" },
 ] as const;
+
+export const impactNote = "생성형 AI를 업무 플로우에 적용해 단축한 리드타임";

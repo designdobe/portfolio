@@ -1,12 +1,6 @@
 import type { Metadata } from "next";
 import { Reveal } from "@/components/reveal";
-import {
-  capabilities,
-  education,
-  experience,
-  profile,
-  tools,
-} from "@/content/profile";
+import { capabilities, experience, profile } from "@/content/profile";
 
 export const metadata: Metadata = {
   title: "About",
@@ -111,45 +105,6 @@ export default function AboutPage() {
               </Reveal>
             ))}
           </ul>
-        </div>
-      </section>
-
-      <section className="border-t border-line py-16 md:py-24">
-        <div
-          className="mx-auto grid max-w-[1600px] gap-14 lg:grid-cols-2 lg:gap-20"
-          style={{ paddingInline: "var(--gutter)" }}
-        >
-          <Reveal>
-            <h2 className="font-display text-2xl md:text-3xl">
-              Education &amp; Awards
-            </h2>
-            <ul className="mt-8 flex flex-col">
-              {education.map((item) => (
-                <li
-                  key={item.title}
-                  className="grid gap-1 border-t border-line py-5 md:grid-cols-[5rem_1fr] md:gap-6"
-                >
-                  <span className="label pt-1 text-fg-dim">{item.year}</span>
-                  <span className="text-fg-muted">{item.title}</span>
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-
-          <Reveal delay={120}>
-            <h2 className="font-display text-2xl md:text-3xl">Core Tools</h2>
-            <ul className="mt-8 flex flex-col">
-              {tools.map((item) => (
-                <li
-                  key={item.group}
-                  className="grid gap-1 border-t border-line py-5 md:grid-cols-[5rem_1fr] md:gap-6"
-                >
-                  <span className="label pt-1 text-fg-dim">{item.group}</span>
-                  <span className="text-fg-muted">{item.items}</span>
-                </li>
-              ))}
-            </ul>
-          </Reveal>
         </div>
       </section>
 
