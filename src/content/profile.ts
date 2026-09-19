@@ -39,32 +39,92 @@ export const capabilities = [
   },
 ] as const;
 
-/** Work Experience - 00resume */
+/**
+ * Work Experience - 00resume, with the project titles the user supplied.
+ *
+ * Titles only: the situation / task / action / result notes behind each one
+ * stay out of the resume section, which is a list, not a case study. The
+ * project pages carry the detail.
+ */
 export const experience = [
   {
     period: "2023.01 - 현재",
     company: "주식회사 거성푸드",
     role: "기획마케팅팀 과장 / BX 파트 총괄",
+    projects: [
+      "신의주찹쌀순대 브랜드 리뉴얼",
+      "신의주찹쌀순대 모델 마케팅",
+      "국밥장인 브랜드 런칭 · 실시디자인",
+      "한식 브랜드 런칭 1주년 이벤트 기획 및 디자인",
+      "신의주 간편식 패키지 디자인",
+      "컬리푸드페스타 2025 부스기획 및 디자인",
+      "SINIJU Thao Dien 베트남 매장 S.I 기획 및 디자인",
+    ],
   },
   {
     period: "2019.01 - 2022.12",
     company: "위뉴",
     role: "BX디자인 선임연구원",
+    projects: ["유어쉘프 브랜드 디자인"],
   },
   {
     period: "2014.01 - 2018.12",
     company: "프리랜서",
-    role: "현상설계설명서 및 설계도면 26건 외 디자인 프로젝트 다수 진행",
+    role: "학교 설계공모 설계도면 및 설계설명서 인포그래픽 · 편집디자인",
+    projects: [],
+    /*
+      26건을 개별 항목으로 세우면 다른 회사의 프로젝트와 무게가 뒤바뀌므로,
+      한 줄로 묶어 참여 범위로 보여준다. 축약 표기는 학교명으로 통일했다
+      (동탄28초 -> 동탄28초등학교, 소사벌4초중 -> 소사벌4초·중학교).
+    */
+    scope: {
+      label: "설계공모 참여 26개교",
+      items: [
+        "동탄10초등학교",
+        "동탄28초등학교",
+        "동패초등학교",
+        "망경초등학교",
+        "복자여자중학교",
+        "새터중학교",
+        "세교1초등학교",
+        "소사벌4초·중학교",
+        "송산2초등학교",
+        "신남중학교",
+        "신촌초등학교",
+        "쌍령1초등학교",
+        "안산1초등학교",
+        "옥계북초등학교",
+        "옥정10초등학교",
+        "운서초등학교",
+        "위례1초등학교",
+        "유천초등학교",
+        "장현2중학교",
+        "장현4초등학교",
+        "진건1유치원",
+        "진건2초등학교",
+        "하늘7초등학교",
+        "한류초등학교",
+        "해원초등학교",
+        "현곡초등학교",
+      ],
+    },
   },
   {
     period: "2011.11 - 2013.08",
     company: "주식회사 케이티하이텔",
     role: "비즈사업팀 디자이너",
+    projects: ["올레 ebook / 라이프자키 UI 디자인"],
   },
   {
     period: "2008.11 - 2011.09",
     company: "주식회사 에이오와이",
     role: "디자인1팀 대리",
+    projects: [
+      "국방문화연구센터(밀리토피아) CI · 색채 · 사인디자인",
+      "삼성화재 미디어컨텐츠 디자인",
+      "송도 글로벌캠퍼스 색채 및 그래픽 디자인",
+      "죽전 힐스테이트 주차장 그래픽",
+    ],
   },
 ] as const;
 
