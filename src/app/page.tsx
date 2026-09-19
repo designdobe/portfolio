@@ -3,65 +3,80 @@ import { MediaSlot } from "@/components/media-slot";
 import { Reveal } from "@/components/reveal";
 import { WorkCard } from "@/components/work-card";
 import { capabilities, experience, impact, profile } from "@/content/profile";
-import { featuredProjects } from "@/content/projects";
+import { publishedFeatured } from "@/lib/published";
 
-const [lead, ...rest] = featuredProjects;
+const [lead, ...rest] = publishedFeatured;
 
 export default function HomePage() {
   return (
     <>
-      {/* Hero - asymmetric split, mirrors 00COVER: chrome monogram beside wide
-          display type on black. Text and monogram occupy separate columns so
-          the headline never sits on top of the metal. */}
+      {/* Hero - 00COVER in web form: an oversized chrome monogram bleeding off
+          the right edge, with the display type set over it. A left-to-right
+          scrim keeps the text side near-black so white type stays legible
+          where it crosses the metal. */}
       <section className="relative flex min-h-[92dvh] items-center overflow-hidden pb-16 pt-24">
+        {/*
+          Small screens give the monogram the empty band above the headline, so
+          it reads as a mark rather than a fragment behind the type. From lg the
+          type has room beside it, so the monogram grows and the headline is set
+          over it.
+        */}
         <div
-          className="mx-auto grid w-full max-w-[1600px] items-center gap-10 lg:grid-cols-[66fr_34fr] lg:gap-8"
+          className="pointer-events-none absolute right-[-12%] top-0 h-[36%] w-[86%] sm:right-[-8%] sm:h-[40%] sm:w-[62%] lg:right-[-7%] lg:h-full lg:w-[72%]"
+          aria-hidden="true"
+        >
+          <MediaSlot
+            src="/brand/monogram.png"
+            alt=""
+            caption="00COVER 크롬 모노그램"
+            aspect="h-full"
+            priority
+            decorative
+            className="size-full"
+          />
+        </div>
+
+        {/* Scrim - above the monogram, below the type. Only the overlapping
+            breakpoints need it. */}
+        <div
+          className="pointer-events-none absolute inset-0 hidden lg:block lg:bg-gradient-to-r lg:from-bg lg:from-20% lg:via-bg/60 lg:via-55% lg:to-transparent"
+          aria-hidden="true"
+        />
+
+        <div
+          className="relative mx-auto w-full max-w-[1600px]"
           style={{ paddingInline: "var(--gutter)" }}
         >
-          <div className="order-2 lg:order-1">
-            <Reveal>
-              <h1 className="font-display chrome-text text-[12vw] leading-[0.9] sm:text-[10vw] lg:text-[3.9vw]">
-                {profile.headline[0]}
-                <br />
-                {profile.headline[1]}
-              </h1>
-            </Reveal>
+          <Reveal>
+            <h1 className="font-display chrome-text chrome-text-over-art text-[12vw] leading-[0.9] sm:text-[10vw] lg:text-[6.1vw]">
+              {profile.headline[0]}
+              <br />
+              {profile.headline[1]}
+            </h1>
+          </Reveal>
 
-            <Reveal delay={120}>
-              <p className="mt-6 max-w-xl text-base text-fg-muted md:text-lg">
-                {profile.summary}
-              </p>
-            </Reveal>
+          <Reveal delay={120}>
+            <p className="mt-6 max-w-xl text-base text-fg-muted md:text-lg">
+              {profile.summary}
+            </p>
+          </Reveal>
 
-            <Reveal delay={200}>
-              <div className="mt-10 flex flex-wrap gap-3">
-                <Link
-                  href="/work"
-                  className="label inline-flex items-center gap-2 bg-accent px-6 py-3.5 text-accent-fg transition-transform active:translate-y-px"
-                >
-                  선택 작업 보기 <span aria-hidden="true">→</span>
-                </Link>
-                <Link
-                  href="/about"
-                  className="label inline-flex items-center border border-line-strong px-6 py-3.5 text-fg transition-colors hover:bg-surface-2 active:translate-y-px"
-                >
-                  이력 보기
-                </Link>
-              </div>
-            </Reveal>
-          </div>
-
-          <div className="order-1 lg:order-2" aria-hidden="true">
-            <MediaSlot
-              src="/brand/monogram.png"
-              alt=""
-              caption="00COVER 크롬 모노그램"
-              aspect="aspect-square"
-              priority
-              decorative
-              className="mx-auto w-2/3 sm:w-1/2 lg:w-full"
-            />
-          </div>
+          <Reveal delay={200}>
+            <div className="mt-10 flex flex-wrap gap-3">
+              <Link
+                href="/work"
+                className="label inline-flex items-center gap-2 bg-accent px-6 py-3.5 text-accent-fg transition-transform active:translate-y-px"
+              >
+                선택 작업 보기 <span aria-hidden="true">→</span>
+              </Link>
+              <Link
+                href="/about"
+                className="label inline-flex items-center border border-line-strong px-6 py-3.5 text-fg transition-colors hover:bg-surface-2 active:translate-y-px"
+              >
+                이력 보기
+              </Link>
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -116,13 +131,15 @@ export default function HomePage() {
             </Reveal>
           )}
 
-          <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
-            {rest.map((project, i) => (
-              <Reveal key={project.slug} delay={(i % 2) * 100}>
-                <WorkCard project={project} />
-              </Reveal>
-            ))}
-          </div>
+          {rest.length > 0 && (
+            <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
+              {rest.map((project, i) => (
+                <Reveal key={project.slug} delay={(i % 2) * 100}>
+                  <WorkCard project={project} />
+                </Reveal>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
@@ -208,14 +225,13 @@ export default function HomePage() {
           style={{ paddingInline: "var(--gutter)" }}
         >
           <Reveal>
-            <h2 className="font-display-ko max-w-[16ch] text-[8.5vw] sm:text-[6vw] lg:text-[3.8vw]">
-              브랜드의 다음 단계를
-              <br />
-              함께 설계할 팀을 찾고 있습니다.
-            </h2>
+            <h2 className="font-display text-4xl md:text-6xl">Contact</h2>
+            <p className="mt-5 max-w-lg text-base text-fg-muted md:text-lg">
+              프로젝트 문의는 메일로 주세요.
+            </p>
             <a
               href={`mailto:${profile.email}`}
-              className="label mt-10 inline-flex items-center gap-2 bg-accent px-7 py-4 text-accent-fg transition-transform active:translate-y-px"
+              className="label mt-9 inline-flex items-center gap-2 bg-accent px-7 py-4 text-accent-fg transition-transform active:translate-y-px"
             >
               {profile.email} <span aria-hidden="true">→</span>
             </a>

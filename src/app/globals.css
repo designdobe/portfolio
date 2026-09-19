@@ -142,6 +142,18 @@ body {
   color: transparent;
 }
 
+/*
+  Hero headline. It crosses the monogram, and the chrome gradient's darker
+  stops would sit straight on the metal there, so a soft dark halo keeps the
+  letterforms separated from whatever is behind them. drop-shadow rather than
+  text-shadow because the fill is a clipped background, which text-shadow
+  paints over.
+*/
+.chrome-text-over-art {
+  filter: drop-shadow(0 2px 18px rgba(0, 0, 0, 0.75))
+    drop-shadow(0 0 3px rgba(0, 0, 0, 0.55));
+}
+
 /* Focus ring: visible on black, square to match the shape rule. */
 :where(a, button, input, textarea, [tabindex]):focus-visible {
   outline: 2px solid var(--fg);

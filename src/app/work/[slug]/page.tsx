@@ -3,17 +3,17 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MediaSlot } from "@/components/media-slot";
 import { Reveal } from "@/components/reveal";
-import { getProject, projects } from "@/content/projects";
+import { getPublishedProject, publishedProjects } from "@/lib/published";
 
 type Params = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
-  return projects.map((p) => ({ slug: p.slug }));
+  return publishedProjects.map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { slug } = await params;
-  const project = getProject(slug);
+  const project = getPublishedProject(slug);
   if (!project) return {};
   return {
     title: project.title,
@@ -24,11 +24,11 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 
 export default async function ProjectPage({ params }: Params) {
   const { slug } = await params;
-  const project = getProject(slug);
+  const project = getPublishedProject(slug);
   if (!project) notFound();
 
-  const index = projects.findIndex((p) => p.slug === slug);
-  const next = projects[(index + 1) % projects.length];
+  const index = publishedProjects.findIndex((p) => p.slug === slug);
+  const next = publishedProjects[(index + 1) % publishedProjects.length];
 
   return (
     <article>
@@ -193,7 +193,8 @@ export default async function ProjectPage({ params }: Params) {
         </section>
       )}
 
-      {/* Next */}
+      {/* Next - hidden while only this project has its imagery */}
+      {publishedProjects.length > 1 && (
       <nav className="border-t border-line" aria-label="다음 프로젝트">
         <Link
           href={`/work/${next.slug}`}
@@ -218,6 +219,7 @@ export default async function ProjectPage({ params }: Params) {
           </div>
         </Link>
       </nav>
+      )}
     </article>
   );
 }

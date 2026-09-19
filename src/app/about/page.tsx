@@ -134,12 +134,13 @@ export default function AboutPage() {
           style={{ paddingInline: "var(--gutter)" }}
         >
           <Reveal>
-            <h2 className="font-display-ko max-w-[16ch] text-[8vw] sm:text-[6vw] lg:text-[3.6vw]">
-              함께 만들 브랜드가 있다면 알려주세요.
-            </h2>
+            <h2 className="font-display text-4xl md:text-6xl">Contact</h2>
+            <p className="mt-5 max-w-lg text-base text-fg-muted md:text-lg">
+              프로젝트 문의는 메일로 주세요.
+            </p>
             <a
               href={`mailto:${profile.email}`}
-              className="label mt-10 inline-flex items-center gap-2 bg-accent px-7 py-4 text-accent-fg transition-transform active:translate-y-px"
+              className="label mt-9 inline-flex items-center gap-2 bg-accent px-7 py-4 text-accent-fg transition-transform active:translate-y-px"
             >
               {profile.email} <span aria-hidden="true">→</span>
             </a>

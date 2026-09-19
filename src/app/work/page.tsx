@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Reveal } from "@/components/reveal";
 import { WorkIndex } from "@/components/work-index";
-import { projects } from "@/content/projects";
+import { publishedProjects } from "@/lib/published";
 
 export const metadata: Metadata = {
   title: "Work",
@@ -27,7 +27,7 @@ export default function WorkPage() {
           </p>
         </Reveal>
 
-        <WorkIndex projects={projects} />
+        <WorkIndex projects={publishedProjects} />
       </div>
     </section>
   );
