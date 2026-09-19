@@ -23,6 +23,8 @@ export type Project = {
   titleKo: string;
   category: Category;
   featured?: boolean;
+  /** Keeps a finished entry out of the site without deleting it or its files. */
+  hidden?: boolean;
   role: string;
   tools?: string;
   overview: string;
@@ -186,6 +188,7 @@ export const projects: Project[] = [
     titleKo: "AI 툴을 통한 업무방식 전환과 확장",
     category: "AI",
     featured: true,
+    hidden: true,
     role: "AI툴 스터디 및 팀내 협업",
     tools: "GPT CODEX, Genspark AI",
     overview:
@@ -345,8 +348,8 @@ export const projects: Project[] = [
     ],
     cover: "/work/yourshelf-pro/cover.jpg",
     media: [
-      { src: "/work/yourshelf-pro/01.jpg", caption: "기획안" },
-      { src: "/work/yourshelf-pro/02.jpg", caption: "촬영본" },
+      { src: "/work/yourshelf-pro/01.jpg", caption: "사진촬영 기획과 촬영" },
+      { src: "/work/yourshelf-pro/02.jpg", caption: "부품 패키지 디자인과 설명서" },
     ],
   },
   {

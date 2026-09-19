@@ -53,7 +53,7 @@ function mediaFor(project: Project) {
 }
 
 export const publishedProjects: Project[] = projects
-  .filter((project) => hasFile(project.cover))
+  .filter((project) => !project.hidden && hasFile(project.cover))
   .map((project) => ({ ...project, media: mediaFor(project) }));
 
 export const publishedFeatured = publishedProjects.filter((p) => p.featured);
@@ -62,7 +62,7 @@ export function getPublishedProject(slug: string) {
   return publishedProjects.find((p) => p.slug === slug);
 }
 
-/** Projects still waiting on a cover. Printed after a build as a reminder. */
+/** Projects still waiting on a cover, ignoring the ones hidden on purpose. */
 export const pendingProjects = projects.filter(
-  (project) => !hasFile(project.cover),
+  (project) => !project.hidden && !hasFile(project.cover),
 );
