@@ -1,44 +1,19 @@
-import fs from "node:fs";
-import path from "node:path";
+import { LogoMark } from "@/components/logo-mark";
 import { profile } from "@/content/profile";
-import { asset } from "@/lib/asset";
-
-const LOGO = "/brand/logo.svg";
-
-/** Server component, so the logo slot can check the file at build time. */
-function hasLogo() {
-  try {
-    return fs.statSync(path.join(process.cwd(), "public", LOGO)).size > 0;
-  } catch {
-    return false;
-  }
-}
 
 export function SiteFooter() {
-  const logo = hasLogo();
-
   return (
     <footer className="border-t border-line">
       <div
         className="mx-auto max-w-[1600px] py-12 md:py-16"
         style={{ paddingInline: "var(--gutter)" }}
       >
-        {logo ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={asset(LOGO)}
-            alt={profile.name}
-            width={257}
-            height={327}
-            className="h-14 w-auto md:h-16"
-          />
-        ) : (
-          // Until the mark is in the repo, the wordmark stands in at the same
-          // scale. Dropping public/brand/logo.svg in swaps it, no code change.
-          <p className="font-display text-xl md:text-2xl">{profile.wordmark}</p>
-        )}
+        {/* Same tone as the line under it: the mark and the tagline are one
+            block, so the mark carrying more weight than its own caption read
+            as two competing elements. */}
+        <LogoMark className="h-20 w-auto text-fg-muted md:h-24" />
 
-        <p className="label mt-3 text-fg-muted">{profile.tagline}</p>
+        <p className="label mt-4 text-fg-muted">{profile.tagline}</p>
 
         {/* Instagram and the copyright carry the same weight: both are footer
             fine print, neither is a call to action. */}

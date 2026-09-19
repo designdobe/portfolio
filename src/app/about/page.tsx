@@ -123,9 +123,6 @@ export default function AboutPage() {
         >
           <Reveal>
             <h2 className="font-display text-4xl md:text-6xl">Contact</h2>
-            <p className="mt-5 max-w-lg text-base text-fg-muted md:text-lg">
-              프로젝트 문의는 메일로 주세요.
-            </p>
             <a
               href={`mailto:${profile.email}`}
               className="label mt-9 inline-flex items-center gap-2 bg-accent px-7 py-4 text-accent-fg transition-transform active:translate-y-px"
