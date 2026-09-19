@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Reveal } from "@/components/reveal";
 import { capabilities, experience, profile } from "@/content/profile";
+import { asset } from "@/lib/asset";
 
 export const metadata: Metadata = {
   title: "About",
@@ -10,10 +11,27 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      {/* Mirrors 00resume: right-aligned display headline over the Korean summary. */}
-      <section className="py-16 md:py-28">
+      {/*
+        Mirrors 00resume: right-aligned display headline over the Korean
+        summary, here on the galaxy plate. The image is dimmed and covered by a
+        gradient that ends at the page background, so the section blends into
+        the black below it instead of stopping at a hard edge, and the headline
+        keeps its contrast where it crosses the spiral arms.
+      */}
+      <section className="relative flex min-h-[72vh] items-end overflow-hidden py-20 md:min-h-[78vh] md:py-28">
+        <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={asset("/brand/about-bg.jpg")}
+            alt=""
+            fetchPriority="high"
+            className="size-full object-cover object-center opacity-80"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-bg/60 via-bg/30 to-bg" />
+        </div>
+
         <div
-          className="mx-auto max-w-[1600px]"
+          className="relative mx-auto w-full max-w-[1600px]"
           style={{ paddingInline: "var(--gutter)" }}
         >
           <Reveal className="md:text-right">
