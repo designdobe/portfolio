@@ -2,7 +2,7 @@ import Link from "next/link";
 import { MediaSlot } from "@/components/media-slot";
 import { Reveal } from "@/components/reveal";
 import { WorkCard } from "@/components/work-card";
-import { capabilities, experience, impact, profile } from "@/content/profile";
+import { capabilities, experience, profile } from "@/content/profile";
 import { publishedFeatured } from "@/lib/published";
 
 const [lead, ...rest] = publishedFeatured;
@@ -77,35 +77,6 @@ export default function HomePage() {
               </Link>
             </div>
           </Reveal>
-        </div>
-      </section>
-
-      {/* Impact - four figures, each quoted from a results slide in the deck. */}
-      <section
-        aria-label="주요 성과"
-        className="border-y border-line bg-surface"
-      >
-        <div
-          className="mx-auto grid max-w-[1600px] grid-cols-1 divide-y divide-line sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4"
-          style={{ paddingInline: "var(--gutter)" }}
-        >
-          {impact.map((item, i) => (
-            <Reveal
-              key={item.label}
-              delay={i * 80}
-              className="py-8 sm:px-6 sm:py-12 sm:first:pl-0 sm:last:pr-0 lg:px-8 [&:not(:first-child)]:sm:border-l [&:not(:first-child)]:sm:border-line lg:[&:nth-child(3)]:border-l"
-            >
-              <p className="flex flex-wrap items-baseline gap-x-2">
-                <span className="font-display text-4xl md:text-5xl">
-                  {item.value}
-                </span>
-                <span className="label text-fg-muted">{item.unit}</span>
-              </p>
-              <p className="mt-3 text-sm leading-relaxed text-fg-muted">
-                {item.label}
-              </p>
-            </Reveal>
-          ))}
         </div>
       </section>
 

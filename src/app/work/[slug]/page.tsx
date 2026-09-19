@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MediaSlot } from "@/components/media-slot";
+import { VideoEmbed } from "@/components/video-embed";
 import { Reveal } from "@/components/reveal";
 import { getPublishedProject, publishedProjects } from "@/lib/published";
 
@@ -94,6 +95,23 @@ export default async function ProjectPage({ params }: Params) {
           </Reveal>
         </div>
       </section>
+
+      {/* Film - the project's own video, where there is one. */}
+      {project.video && (
+        <section className="border-t border-line py-16 md:py-24">
+          <div
+            className="mx-auto grid max-w-[1600px] gap-8 lg:grid-cols-[minmax(0,18rem)_1fr] lg:gap-16"
+            style={{ paddingInline: "var(--gutter)" }}
+          >
+            <Reveal>
+              <h2 className="font-display text-2xl md:text-3xl">Film</h2>
+            </Reveal>
+            <Reveal delay={100}>
+              <VideoEmbed {...project.video} />
+            </Reveal>
+          </div>
+        </section>
+      )}
 
       {/* Strategy sections */}
       {project.sections && project.sections.length > 0 && (

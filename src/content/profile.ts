@@ -81,7 +81,14 @@ export const tools = [
   { group: "Video", items: "Premiere Pro, Final Cut Pro" },
 ] as const;
 
-/** Homepage impact strip. Every figure is quoted from a results slide. */
+/**
+ * Figures for the homepage impact strip, each quoted from a results slide.
+ *
+ * NOT RENDERED at the moment: the four read as a jumble side by side, mixing
+ * store counts, visitor counts and revenue percentages, so the strip was taken
+ * off the landing page. Kept here so it can be put back, whole or in part, by
+ * restoring the section in src/app/page.tsx.
+ */
 export const impact = [
   { value: "40", unit: "Stores", label: "S.I 가이드 적용 및 시공 완료", source: "01_07" },
   { value: "+16", unit: "%", label: "리뉴얼 런칭 후 가맹 문의 상승", source: "01_07" },

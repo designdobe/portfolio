@@ -33,6 +33,8 @@ export type Project = {
   quote?: string;
   cover: string;
   media?: { src: string; caption: string }[];
+  /** A YouTube film that is the project's own deliverable. */
+  video?: { youtubeId: string; title: string; vertical?: boolean };
 };
 
 export const projects: Project[] = [
@@ -392,6 +394,11 @@ export const projects: Project[] = [
       "일리윤 제품의 특허받은 핵심 기능인 '노폐물 흡착' 및 '수분 공급' 효능을 시각적으로 극대화하기 위해 생성형 AI 툴만을 이용해 모든 영상컷을 제작하였습니다. 1차 예선 통과 후 피드백 과정을 거쳐 보완한 뒤 본선에서 아이디어상을 수상하였습니다.",
     results: [{ value: "아이디어상", label: "아모레퍼시픽 AI 콘텐츠 챌린지 2025 본선 수상" }],
     cover: "/work/illiyoon-ai-brand-film/cover.jpg",
+    video: {
+      youtubeId: "BQW8U-RBnNY",
+      title: "ILLIYOON AI BRAND FILM - 아모레퍼시픽 AI 콘텐츠 챌린지 2025",
+      vertical: true,
+    },
   },
   {
     slug: "kimdobe-personal-branding",
