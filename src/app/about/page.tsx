@@ -67,7 +67,7 @@ export default function AboutPage() {
           <ul className="mt-10 flex flex-col">
             {experience.map((job, i) => (
               <Reveal
-                key={`${job.company}-${job.period}`}
+                key={job.period}
                 delay={i * 60}
                 as="li"
                 className="grid gap-4 border-t border-line py-8 md:grid-cols-[12rem_1fr] md:gap-10 md:py-10"
@@ -75,26 +75,16 @@ export default function AboutPage() {
                 <span className="label pt-1 text-fg-dim">{job.period}</span>
 
                 <div>
-                  <p className="text-lg md:text-xl">{job.company}</p>
-                  <p className="mt-1 text-sm leading-relaxed text-fg-muted">
-                    {job.role}
-                  </p>
-
-                  {job.projects.length > 0 && (
-                    <ul className="mt-6 grid gap-x-10 lg:grid-cols-2">
-                      {job.projects.map((title) => (
-                        <li
-                          key={title}
-                          className="border-t border-line py-2.5 text-sm"
-                        >
-                          {title}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
+                  <ul className="grid gap-x-10 lg:grid-cols-2">
+                    {job.projects.map((title) => (
+                      <li key={title} className="py-2.5 text-base md:text-lg">
+                        {title}
+                      </li>
+                    ))}
+                  </ul>
 
                   {"scope" in job && job.scope && (
-                    <div className="mt-6 border-t border-line pt-4">
+                    <div className="mt-5 border-t border-line pt-4">
                       <p className="label text-fg-dim">{job.scope.label}</p>
                       <p className="mt-2 text-sm leading-relaxed text-fg-muted">
                         {job.scope.items.join(", ")}

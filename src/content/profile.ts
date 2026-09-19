@@ -45,6 +45,11 @@ export const capabilities = [
  * Titles only: the situation / task / action / result notes behind each one
  * stay out of the resume section, which is a list, not a case study. The
  * project pages carry the detail.
+ *
+ * `company` and `role` are NOT RENDERED - the section lists periods and the
+ * work done in them, nothing else. They stay here because they are the record
+ * the deck carries, and putting them back is then a template change rather
+ * than a research job.
  */
 export const experience = [
   {
@@ -71,7 +76,8 @@ export const experience = [
     period: "2014.01 - 2018.12",
     company: "프리랜서",
     role: "학교 설계공모 설계도면 및 설계설명서 인포그래픽 · 편집디자인",
-    projects: [],
+    // With roles unrendered, this row's work would otherwise be nameless.
+    projects: ["학교 설계공모 설계도면 및 설계설명서 인포그래픽 · 편집디자인"],
     /*
       26건을 개별 항목으로 세우면 다른 회사의 프로젝트와 무게가 뒤바뀌므로,
       한 줄로 묶어 참여 범위로 보여준다. 축약 표기는 학교명으로 통일했다

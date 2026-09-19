@@ -208,21 +208,25 @@ export default function HomePage() {
           </Reveal>
 
           <Reveal delay={120}>
+            {/* Teaser: the periods and what was worked on, capped so the
+                column stays short. The about page carries the full list. */}
             <ul className="flex flex-col">
-              {experience.map((job) => (
-                <li
-                  key={`${job.company}-${job.period}`}
-                  className="grid gap-1 border-t border-line py-5 md:grid-cols-[10rem_1fr] md:gap-6"
-                >
-                  <span className="label pt-1 text-fg-dim">{job.period}</span>
-                  <span>
-                    <span className="block">{job.company}</span>
-                    <span className="mt-1 block text-sm text-fg-muted">
-                      {job.role}
+              {experience.map((job) => {
+                const shown = job.projects.slice(0, 3);
+                const rest = job.projects.length - shown.length;
+                return (
+                  <li
+                    key={job.period}
+                    className="grid gap-1 border-t border-line py-5 md:grid-cols-[10rem_1fr] md:gap-6"
+                  >
+                    <span className="label pt-1 text-fg-dim">{job.period}</span>
+                    <span className="text-sm leading-relaxed text-fg-muted">
+                      {shown.join(", ")}
+                      {rest > 0 && ` 외 ${rest}건`}
                     </span>
-                  </span>
-                </li>
-              ))}
+                  </li>
+                );
+              })}
             </ul>
           </Reveal>
         </div>
