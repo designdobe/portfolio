@@ -3,6 +3,7 @@ import { Archivo, Gothic_A1 } from "next/font/google";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { profile } from "@/content/profile";
+import { siteUrl } from "@/lib/site-url";
 import "./globals.css";
 
 /** Open stand-in for the deck's Owners XXWide. See globals.css .font-display. */
@@ -27,8 +28,6 @@ const gothicA1 = Gothic_A1({
   weight: ["300", "400", "700"],
   display: "swap",
 });
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://kimyuri.portfolio";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

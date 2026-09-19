@@ -77,13 +77,16 @@ src/
 1. <https://vercel.com/new> 접속 → GitHub 계정 연결
 2. `designdobe/portfolio` 선택 → **Import**
 3. Framework는 Next.js로 자동 인식됩니다. 빌드 명령·출력 경로를 손댈 필요 없습니다
-4. **Environment Variables**에 하나만 추가합니다
+4. **Environment Variables는 비워두고 넘어가세요.** Vercel이 배포하면서
+   도메인을 만들어 주는데, 그 전에는 주소를 알 수 없습니다. 사이트맵과 OG
+   태그는 Vercel이 자체적으로 넣어주는 `VERCEL_PROJECT_PRODUCTION_URL`을
+   읽어 알아서 맞춰집니다.
 
-       NEXT_PUBLIC_SITE_URL = https://<실제 도메인>
+   나중에 직접 구매한 도메인을 연결하면, 그때 Settings → Environment
+   Variables에 추가하고 재배포하세요. 이 값이 있으면 우선 적용됩니다.
 
-   사이트맵과 OG 태그의 절대 URL에 쓰입니다. 생략해도 배포는 되지만
-   공유 카드와 검색 노출에 잘못된 주소가 들어갑니다. 배포 후 도메인이
-   정해지면 넣고 재배포해도 됩니다.
+       NEXT_PUBLIC_SITE_URL = https://<도메인>
+
 5. **Deploy**
 
 `NEXT_PUBLIC_BASE_PATH`는 **넣지 마세요.** 그 변수가 있으면 하위 경로용
